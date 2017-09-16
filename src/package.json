@@ -1,0 +1,7 @@
+{
+    "name": "ng-tree-antd",
+    "peerDependencies": {
+        "ng-zorro-antd": "^5.0.0",
+        "angular-tree-component": "^5.0.0"
+    }
+}
