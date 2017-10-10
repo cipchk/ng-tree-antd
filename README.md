@@ -76,6 +76,18 @@ export class DemoDraggableComponent {
 }
 ```
 
+## `nzNodes` DATA
+
+the `nzNodes` is array  of the tree, and each node may contain the following fileds: 
+
++ `id` unique id
++ `name` default displayed filed, you can setting `displayField` of `options` property
++ `checked` specifies whether the checkbox is selected
++ `disableCheckbox` disable checkbox
++ `halfChecked` achieve a 'check all' effect
++ `children` an array of the node's children.
++ `hasChildren` for async data load, so you need setting `getChildren` of `options` property
+
 ## API
 
 | Name    | Type           | Default  | Summary |
