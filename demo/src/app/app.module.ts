@@ -10,7 +10,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NzTreeModule } from 'ng-tree-antd';
 
 import { AppComponent } from './app.component';
-import { DemoBasicComponent } from "./demo/basic.component";
+import { DemoBasicComponent } from './demo/basic.component';
 import { DemoAsyncComponent } from './demo/async.component';
 import { HomeComponent } from './demo/home.component';
 import { DemoDraggableComponent } from './demo/draggable.component';
