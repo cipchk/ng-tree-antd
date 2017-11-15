@@ -110,6 +110,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
   toggleCheck(node: TreeNode) {
     if (node.data.disableCheckbox !== true) {
       node.data.checked = !node.data.checked;
+      node.data.halfChecked = false;
       this.updateCheckState(node, node.data.checked);
       this.fireEvent({ eventName: 'check', node: node, checked: node.data.checked });
     }
