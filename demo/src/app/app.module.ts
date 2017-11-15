@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { HighlightJsModule } from 'ngx-highlight-js';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
@@ -24,7 +23,6 @@ import { DemoLineComponent } from './demo/line.component';
     FormsModule,
     HttpModule,
     CommonModule,
-    HighlightJsModule,
 
     NzTreeModule,
     NgZorroAntdModule.forRoot()

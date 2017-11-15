@@ -4,8 +4,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
     selector: 'app-root',
     template: `
     <h1>ng-tree-antd</h1>
-    <p class="mb-3">A antd style of based on angular-tree-component, <a href="https://github.com/cipchk/ng-tree-antd/blob/master/README.md" target="_blank">README.md</a>.</p>
-    <app-home></app-home>
+    <p>A antd style of based on angular-tree-component, <a href="https://github.com/cipchk/ng-tree-antd/blob/master/README.md" target="_blank">README.md</a>.</p>
+    <div style="margin-top: 16px">
+        <app-home></app-home>
+    </div>
   `
 })
 export class AppComponent {
