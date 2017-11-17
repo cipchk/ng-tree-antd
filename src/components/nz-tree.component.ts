@@ -62,7 +62,7 @@ import { NzTreeOptions } from './nz-tree.options';
           <span *ngIf="!nzTitle" class="ant-tree-title" [innerHTML]="node.displayField"></span>
           <ng-container
             [ngTemplateOutlet]="nzTitle"
-            [ngOutletContext]="{ $implicit: node, node: node, index: index }">
+            [ngTemplateOutletContext]="{ node: node, index: index }">
           </ng-container>
         </span>
         <tree-node-children [node]="node" [templates]="templates"></tree-node-children>
