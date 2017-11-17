@@ -11,7 +11,7 @@ A antd style of based on angular-tree-component.
 
 ## Dependencies
 
-+ `angular-tree-component` **^5.0.0**
++ `angular-tree-component` **^5.2.0**
 
 ## Usage & Installation
 
@@ -78,7 +78,7 @@ export class DemoDraggableComponent {
 
 ## `nzNodes` DATA
 
-the `nzNodes` is array  of the tree, and each node may contain the following fileds: 
+the `nzNodes` is array  of the tree, and each node may contain the following fileds:
 
 + `id` unique id
 + `name` default displayed filed, you can setting `displayField` of `options` property
