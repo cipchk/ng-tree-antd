@@ -1,5 +1,5 @@
 import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ViewEncapsulation, ContentChild, TemplateRef, OnInit } from '@angular/core';
-import { TreeComponent, TreeModel, TreeNode } from 'angular-tree-component';
+import { TreeComponent, TreeModel, TreeNode, TREE_ACTIONS, IActionMapping } from 'angular-tree-component';
 import { NzTreeOptions } from './nz-tree.options';
 
 @Component({
@@ -73,7 +73,10 @@ import { NzTreeOptions } from './nz-tree.options';
   </tree-root>
   `,
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [ './nz-tree.component.css' ]
+  styleUrls: [
+    './style/index.less',
+    './style/patch.less'
+  ]
 })
 export class NzTreeComponent implements OnInit, OnChanges {
   _options: NzTreeOptions;
@@ -82,6 +85,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
   @Input() nzCheckable = false;
   @Input() nzShowLine = false;
   @Input() nzOptions: any;
+  @Input() nzShiftSelectedMulti = true;
   @ContentChild('nzTitle') nzTitle: TemplateRef<any>;
   @ContentChild('nzLoading') nzLoading: TemplateRef<any>;
 
@@ -173,7 +177,18 @@ export class NzTreeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    const actionMapping: IActionMapping = { };
+    if (this.nzShiftSelectedMulti) {
+        actionMapping.mouse = {
+            click: (tree, node, $event: any) => {
+              $event.shiftKey
+                ? TREE_ACTIONS.TOGGLE_SELECTED_MULTI(tree, node, $event)
+                : TREE_ACTIONS.TOGGLE_SELECTED(tree, node, $event);
+            }
+        };
+    }
     this._options = Object.assign({
+      actionMapping,
       animateExpand: true
     }, this.nzOptions);
   }

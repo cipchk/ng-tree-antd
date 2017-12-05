@@ -98,6 +98,7 @@ the `nzNodes` is array  of the tree, and each node may contain the following fil
 | nzOptions | `TreeOptions` |  | see [options](https://angular2-tree.readme.io/docs/options) |
 | nzTitle | `TemplateRef` |  | Custom title |
 | nzLoading | `TemplateRef` |  | Custom Loading |
+| nzShiftSelectedMulti | `boolean` | `true` | selected multi when shift key |
 | nzToggleExpanded | `EventEmitter` |  | see [events](https://angular2-tree.readme.io/docs/events) |
 | nzActivate | `EventEmitter` |  |  |
 | nzDeactivate | `EventEmitter` |  |  |

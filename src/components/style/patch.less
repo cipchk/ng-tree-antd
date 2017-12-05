@@ -68,6 +68,7 @@
         color: @text-color;
         transition: all .3s;
         position: relative;
+        user-select: none;
         &:hover {
             background-color: @item-hover-bg;
         }
@@ -139,6 +140,7 @@
     &&-show-line {
         .ant-tree-node {
             position: relative;
+            user-select: none;
             span {
                 &.@{tree-prefix-cls}-switcher {
                     background: @component-background;
