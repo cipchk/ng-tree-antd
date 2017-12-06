@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const rollup = require('gulp-rollup');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
+const less = require('gulp-less');
 const bump = require('gulp-bump');
 const inline_recources = require('./scripts/inline-resources');
 // @ts-ignore
@@ -27,7 +28,24 @@ function bumpVersions() {
 }
 function copySources() {
     gulp.src('./src/**/*')
-        .pipe(gulp.dest(paths.build));
+        .pipe(gulp.dest(paths.build))
+        .on('end', replaceLessWithCSS)
+        ;
+}
+
+function replaceLessWithCSS() {
+    gulp.src(`${paths.build}/**/*.ts`)
+        .pipe(replace('.less', '.css'))
+        .pipe(gulp.dest(paths.build))
+        .on('end', compileLess);
+}
+
+function compileLess() {
+    gulp.src([
+            `${paths.build}/**/*.less`
+        ])
+      .pipe(less())
+      .pipe(gulp.dest(paths.build));
 }
 
 function copyResources() {
