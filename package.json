@@ -1,6 +1,6 @@
 {
   "name": "ng-tree-antd",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "main": "./bundles/ng-tree-antd.umd.js",
   "typings": "index.d.ts",
   "description": "A antd style of based on angular-tree-component.",
@@ -101,6 +101,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "less-plugin-autoprefix": "^1.5.1",
     "ng-zorro-antd": "^0.6.0-rc.3",
     "ngm-cli": "^0.8.3",
     "npm-run-all": "^4.1.1",
