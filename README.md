@@ -7,11 +7,11 @@ A antd style of based on angular-tree-component.
 
 ## Demo
 
-[Live Demo](https://cipchk.github.io/ng-tree-antd/)
+[Live Demo](https://cipchk.github.io/ng-tree-antd/) & [stackblitz](https://stackblitz.com/edit/ng-tree-antd?file=app%2Fapp.component.ts)
 
 ## Dependencies
 
-+ `angular-tree-component` **^5.2.0**
++ `angular-tree-component` **^7.0.1**
 
 ## Usage & Installation
 

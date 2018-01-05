@@ -27,7 +27,7 @@ function bumpVersions() {
         .pipe(gulp.dest('./'));
 }
 function copySources() {
-    gulp.src('./src/**/*')
+    gulp.src('./lib/**/*')
         .pipe(gulp.dest(paths.build))
         .on('end', replaceLessWithCSS)
         ;
@@ -56,8 +56,7 @@ function copyResources() {
         `./package.json`,
         `${paths.build}/**/*.html`,
         `${paths.build}/**/*.css`,
-        `${paths.build}/**/*.less`,
-        `${paths.build}/**/*.scss`
+        `${paths.build}/**/*.less`
     ])
     .pipe(gulp.dest(paths.lib))
     .on('end', () => inline_recources(paths.lib));
