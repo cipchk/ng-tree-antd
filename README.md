@@ -93,6 +93,7 @@ the `nzNodes` is array  of the tree, and each node may contain the following fil
 | Name    | Type           | Default  | Summary |
 | ------- | ------------- | ----- | ----- |
 | nzNodes | `any[]` |  | see [inputs](https://angular2-tree.readme.io/docs/inputs) |
+| nzAutoExpandParent | `boolean, number` | `false` | 是否自动展开父节点，当数字时展开最大节点 |
 | nzCheckable | `boolean` | `false` | Add a `checkbox` before the node |
 | nzShowLine | `boolean` | `false` | Shows a connecting line |
 | nzOptions | `TreeOptions` |  | see [options](https://angular2-tree.readme.io/docs/options) |

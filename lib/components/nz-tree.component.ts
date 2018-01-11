@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ViewEncapsulation, ContentChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ViewEncapsulation, ContentChild, TemplateRef, OnInit, SimpleChange } from '@angular/core';
 import { TreeComponent, TreeModel, TreeNode, TREE_ACTIONS, IActionMapping } from 'angular-tree-component';
 import { NzTreeOptions } from './nz-tree.options';
 
@@ -83,6 +83,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
 
   @Input() nzNodes: any[];
   @Input() nzCheckable = false;
+  @Input() nzAutoExpandParent: boolean | number = false;
   @Input() nzShowLine = false;
   @Input() nzOptions: any;
   @Input() nzShiftSelectedMulti = true;
@@ -112,12 +113,35 @@ export class NzTreeComponent implements OnInit, OnChanges {
   }
 
   toggleCheck(node: TreeNode) {
-    if (node.data.disableCheckbox !== true) {
+      if (node.data.disableCheckbox) return ;
       node.data.checked = !node.data.checked;
       node.data.halfChecked = false;
       this.updateCheckState(node, node.data.checked);
       this.fireEvent({ eventName: 'check', node: node, checked: node.data.checked });
-    }
+  }
+
+  private traverseData(
+      nodes: any[],
+      callback: (node: any, level: number, parent: any, nodes: any[]) => void
+    ): void {
+    const traverse = (subTreeNodes: any[], level: number, parent: any) => {
+        if (Array.isArray(subTreeNodes)) {
+            subTreeNodes = subTreeNodes.filter(item => !!item);
+        }
+        subTreeNodes.forEach((item, index) => {
+            if (!item.children) item.children = [];
+            if (item.children && item.children.length > 0) {
+                traverse(item.children, ++level, item);
+            }
+            callback(
+                item,
+                level,
+                parent,
+                subTreeNodes
+            );
+        });
+    };
+    traverse(nodes, 0, null);
   }
 
   private updateCheckState(node: TreeNode, checkIt: boolean) {
@@ -172,11 +196,39 @@ export class NzTreeComponent implements OnInit, OnChanges {
     this.nzEvent.emit(event);
   }
 
+  private traverseNode(): this {
+    // nzAutoExpandParent
+    let maxLevel = 0;
+    let expand = this.nzAutoExpandParent;
+    if (typeof expand === 'number') {
+        maxLevel = expand;
+        expand = true;
+    }
+    this.traverseData(this.nzNodes, (node, level, parent, nodes) => {
+        // expand
+        if (expand && typeof node.isExpanded === 'undefined') {
+            node.isExpanded = maxLevel === 0 || level <= maxLevel;
+            console.log(node);
+        }
+        // checked
+        if (!parent || node.checked) return;
+        const validNodes = nodes.filter(w => !w.disableCheckbox);
+        const checkCount = validNodes.filter(w => w.checked).length;
+        if (checkCount === 0) return;
+
+        if (checkCount === validNodes.length)
+            parent.checked = true;
+        else
+            parent.halfChecked = true;
+    });
+    return this;
+  }
+
   ngOnInit() {
     console.log('this._options', this._options);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {
     const actionMapping: IActionMapping = { };
     if (this.nzShiftSelectedMulti) {
         actionMapping.mouse = {
@@ -191,7 +243,8 @@ export class NzTreeComponent implements OnInit, OnChanges {
       actionMapping,
       animateExpand: true
     }, this.nzOptions);
+    if (changes.nzNodes) {
+        this.traverseNode();
+    }
   }
-
-  [key: string]: any;
 }
