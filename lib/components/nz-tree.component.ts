@@ -129,7 +129,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
             subTreeNodes = subTreeNodes.filter(item => !!item);
         }
         subTreeNodes.forEach((item, index) => {
-            if (!item.children) item.children = [];
+            // if (!item.children) item.children = [];
             if (item.children && item.children.length > 0) {
                 traverse(item.children, ++level, item);
             }
