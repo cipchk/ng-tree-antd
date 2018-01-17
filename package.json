@@ -1,6 +1,6 @@
 {
     "name": "ng-tree-antd",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "license": "MIT",
     "description": "Angular for tinymce",
     "main": "./bundles/ng-tree-antd.umd.js",

@@ -29,7 +29,7 @@
   @font-scale: unit(@size / 12px);
   font-size: @font-size-base;
   // ie8-9
-  font-size: ~"@{size} \9"; // lesshint duplicateProperty: false
+  // font-size: ~"@{size} \9"; // lesshint duplicateProperty: false
   transform: scale(@font-scale) rotate(@rotate);
   .ie-rotate-via-degrees(@rotate);
   :root & {
