@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       <div nz-col [nzSpan]="12"><demo-searchable></demo-searchable></div>
       <div nz-col [nzSpan]="12"><demo-line></demo-line></div>
       <div nz-col [nzSpan]="12"><demo-custom></demo-custom></div>
+      <div nz-col [nzSpan]="12"><demo-linkage></demo-linkage></div>
   </div>
   `
 })

@@ -17,6 +17,7 @@ import { DemoDraggableComponent } from './demo/draggable.component';
 import { DemoSearchableComponent } from './demo/searchable.component';
 import { DemoLineComponent } from './demo/line.component';
 import { DemoCustomComponent } from './demo/custom.component';
+import { DemoLinkageComponent } from './demo/linkage.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { DemoCustomComponent } from './demo/custom.component';
     DemoDraggableComponent,
     DemoSearchableComponent,
     DemoLineComponent,
-    DemoCustomComponent
+    DemoCustomComponent,
+    DemoLinkageComponent
   ],
   providers: [  ],
   bootstrap: [AppComponent]
