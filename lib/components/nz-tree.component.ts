@@ -84,6 +84,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
   @Input() nzNodes: any[];
   @Input() nzCheckable = false;
   @Input() nzAutoExpandParent: boolean | number = false;
+  @Input() nzAllowParentLinkage = false;
   @Input() nzShowLine = false;
   @Input() nzOptions: any;
   @Input() nzShiftSelectedMulti = true;
@@ -183,7 +184,9 @@ export class NzTreeComponent implements OnInit, OnChanges {
       }
       parentLoop(parentNode);
     };
-    parentLoop(node);
+    if(nzAllowParentLinkage){
+        parentLoop(node);
+    }
   }
 
   fireEvent(event: any) {
