@@ -184,7 +184,7 @@ export class NzTreeComponent implements OnInit, OnChanges {
       }
       parentLoop(parentNode);
     };
-    if(nzAllowParentLinkage){
+    if(this.nzAllowParentLinkage){
         parentLoop(node);
     }
   }
