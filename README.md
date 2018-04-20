@@ -1,3 +1,5 @@
+# 项目不会再发布兼容 ng-zorro-antd `0.7.0` 版本，已经内置 `nz-tree` 组件；`0.6.x` 之前的依然可用。
+
 # ng-tree-antd
 
 A antd style of based on angular-tree-component.
